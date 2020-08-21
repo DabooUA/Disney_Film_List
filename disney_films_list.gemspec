@@ -6,9 +6,9 @@ Gem::Specification.new do |spec|
   spec.authors       = ["DabooUA"]
   spec.email         = ["sbardysh@tutanota.com"]
 
-  spec.summary       = %q{TODO: Write a short summary, because RubyGems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = https://github.com/DabooUA/Disney_Film_List
+  spec.summary       = ["Full List of Disney Films"]
+  spec.description   = ["Provides user with entire list of Disney Movies all the way from 1937 up to most recent releases"]
+  spec.homepage      = "https://github.com/DabooUA/Disney_Film_List"
   spec.license       = "MIT"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.3.0")
 
@@ -30,7 +30,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "bundler", "~> 2.0"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "pry"
-  spec.add_development_dependency "nokogiri"
-  spec.add_development_dependency "open-uri"
-  spec.add_dependency "httparty"
+  spec.add_dependency "nokogiri"
 end
