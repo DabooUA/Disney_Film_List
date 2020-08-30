@@ -1,8 +1,10 @@
-class Film
 
-attr_reader :name, :link
 
-@@all = []
+class DisneyFilmsList::Film
+
+    attr_reader :name, :link
+
+    @@all = []
 
     def initialize (name, link)
       @name = name
@@ -18,5 +20,5 @@ attr_reader :name, :link
     def self.all
         @@all
     end
-
+  
 end
