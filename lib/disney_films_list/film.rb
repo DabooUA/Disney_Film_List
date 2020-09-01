@@ -1,7 +1,7 @@
 
 
 class DisneyFilmsList::Film
-
+    attr_accessor :biography
     attr_reader :name, :link
 
     @@all = []
@@ -9,6 +9,7 @@ class DisneyFilmsList::Film
     def initialize (name, link)
       @name = name
       @link = link
+      @biography = "Sorry no biography available for this film."
      self.save
 
     end
