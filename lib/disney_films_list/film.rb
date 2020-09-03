@@ -2,15 +2,15 @@
 
 class DisneyFilmsList::Film
     attr_accessor :biography
-    attr_reader :name, :link
+    attr_reader :film_name, :film_href
 
     @@all = []
 
-    def initialize (name, link)
-      @name = name
-      @link = link
+    def initialize (film_name, film_href)
+      @film_name = film_name
+      @film_href = film_href
       @biography = "Sorry no biography available for this film."
-     self.save
+      self.save
 
     end
 
