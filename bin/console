@@ -2,7 +2,7 @@
 
 require "bundler/setup"
 require "disney_films_list"
-require_relative "../lib/disney_films_list/scraper.rb"
+require_relative "../lib/disney_films_list/scraper"
 require_relative "../lib/disney_films_list/cli"
 require_relative "../lib/disney_films_list/film"
 

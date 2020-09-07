@@ -9,33 +9,30 @@ class DisneyFilmsList::CLI
         puts "Welcome to complete list of Disney films all the way from 1937 to must recent releases! \n"
         
         list_films
+        
         input = ''
-        #DisneyFilmsList::Scraper.get_films
-        #binding.pry
+        
             puts "---------------------------------------------------------------------------------------"       
             puts "Please select film to learn more about it: "
-           # puts film_name
             
             input = gets.strip
             #biography = input.chomp
             if input.to_i > 0 && input.to_i <= DisneyFilmsList::Film.all.length
                 film = DisneyFilmsList::Film.all[input.to_i - 1]
-                DisneyFilmsList::Scraper.get_film_bio(href)
-                puts href.biography
+                link = DisneyFilmsList::Scraper.get_film_bio(film.film_href)
+                puts "#{link}"
             elsif input == 'list'
                 list_films
-            # elsif input == 'exit'
-            #     break
             else 
-                puts 'Invalid input'
-            end
+                puts 'Invalid input, please try again.'
+             end
         
     end
 
     def list_films
-        DisneyFilmsList::Film.all.each do |f|
-            puts "#{f.film_name}"
-            #binding.pry
+        DisneyFilmsList::Film.all.each_with_index do |f, index|
+            puts "#{index + 1}. #{f.film_name}"
+            
         end
     end
 end
