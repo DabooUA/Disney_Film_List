@@ -18,7 +18,7 @@ class DisneyFilmsList::Scraper
                 DisneyFilmsList::Film.new(film_name, film_href)
         end
     end
-                # self.get_film_bio(film_href)
+                
     def self.get_film_bio(href)
         doc = Nokogiri::HTML(open("https://d23.com/a-to-z/#{href}/"))
         doc.css('.entry-content').text.strip
