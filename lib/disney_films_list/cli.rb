@@ -58,36 +58,28 @@ class DisneyFilmsList::CLI
                         puts "Sorry no biography available for this film at this time.".red
                     else
                         puts "#{link}"
-                    end
+            end
                 
                 puts ""
                 puts "If you would like to view full list of films, please type - yes or y".blue
                 puts "OR".center(50)
                 puts "If you would like to exit, please press any key. ".green
-                    input = gets.strip.downcase
-                    loop do
+                     input = gets.strip.downcase
+                loop do
 
                     case 
-                        when input.match?(/yes/ || /y/)
+                        when input.match?(/yes/) || input.match?(/y/)
                             list_films
-                        when input.match?(/exit/ || /e/)
+                            break
+                        when input.match?(/exit/) || input.match?(/e/)
                             exit                
-                        when !input.match?(/yes/ || /y/)
+                        when !input.match?(/yes/) || !input.match?(/y/)
                             puts "Wrong input, please type 'yes' or 'y': "
                             input = gets.strip.downcase
                         else
                             break
-                            #input = gets.strip.downcase
-                        # if input == "yes" || "y"
-                        #     list_films
-                        # elsif input =! "yes" && "y"
-                        #     puts "Wrong input, please type 'yes' or 'y'."
-                        #     input = gets.strip.downcase
-                            
-                        # else 
-                        #     exit
-                        # end
                     end
+                    
                 end
             else 
                 puts "Invalid input, please try again: ".red
