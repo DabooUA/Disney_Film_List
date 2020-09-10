@@ -38,7 +38,7 @@ class DisneyFilmsList::CLI
         puts ""
         puts ""
         puts ""
-        puts "List of Disney films all the way from 1937 to most recent releases, including the bio! \n"
+        puts "List of Disney films all the way from 1937 to most recent releases, including thier bio! \n"
         input = ''
         input = gets.strip
         puts "Please enter any key to view the list of Films."
