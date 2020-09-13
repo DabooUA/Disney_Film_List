@@ -45,59 +45,61 @@ class DisneyFilmsList::CLI
         input = ''
         input = gets.strip
         
-
-    loop do    
-        list_films
-        
-        puts "---------------------------------------------------------------------------------------"       
-        puts "Please select a number of the film you would like to view biography of: "
-            
-        input = gets.strip
-        puts ""
-            if input.to_i > 0 && input.to_i <= DisneyFilmsList::Film.all.length
-                film = DisneyFilmsList::Film.all[input.to_i - 1]
-                link = DisneyFilmsList::Scraper.get_film_bio(film.film_href)
-                    if link == ""
-                        puts "Sorry no biography available for this film at this time.".red
-                    else
-                        puts "#{link}"
-            end
+            loop do    
+                list_films
                 
-                puts ""
-                puts "If you would like to view full list of films, please type - yes or y".blue
-                puts "OR".center(50)
-                puts "If you would like to exit, please press any key. ".green
-                     input = gets.strip.downcase
-                loop do
-
-                    case 
-                        when input.match?(/yes/) || input.match?(/y/)
-                            list_films
-                            break
-                        when input.match?(/exit/) || input.match?(/e/)
-                            exit                
-                        when !input.match?(/yes/) || !input.match?(/y/)
-                            puts "Wrong input, please type 'yes' or 'y': "
-                            input = gets.strip.downcase
-                        else
-                            break
-                    end
+                puts "---------------------------------------------------------------------------------------"       
+                puts "Please select a number of the film you would like to view biography of: "
                     
-                end
-            else 
-                puts "Invalid input, please try again: ".red
+                input = gets.strip
                 puts ""
-                input = gets.strip.downcase
-            end
-        end    
+                if input.to_i > 0 && input.to_i <= DisneyFilmsList::Film.all.length
+                    film = DisneyFilmsList::Film.all[input.to_i - 1]
+                    link = DisneyFilmsList::Scraper.get_film_bio(film.film_href)
+                        if link == ""
+                            puts "Sorry no biography available for this film at this time.".red
+                        else
+                            puts "#{film.film_name}".upcase.yellow
+                            puts ""
+                            puts ""
+                            puts "#{link}"
+                        end
+                
+                    
+                    puts ""
+                    puts "If you would like to view full list of films, please type - yes or y".blue
+                    puts "OR".center(50)
+                    puts "If you would like to exit, please press any key. ".green
+                    input = gets.strip.downcase
+                    loop do
+    
+                        case 
+                            when input.match?(/yes/) || input.match?(/y/)
+                                list_films
+                                break
+                            when input.match?(/exit/) || input.match?(/e/)
+                                exit                
+                            when !input.match?(/yes/) || !input.match?(/y/)
+                                puts "Wrong input, please type 'yes' or 'y': "
+                                input = gets.strip.downcase
+                            else
+                                break
+                        end
+                        
+                    end
+                else 
+                    puts "Invalid input, please try again: ".red
+                    puts ""
+                    input = gets.strip.downcase
+                end 
+            end       
     end
-
+    
     def list_films
         DisneyFilmsList::Film.all.each_with_index do |f, index|
             puts "#{index + 1}. #{f.film_name}"           
         end
     end
-
-end
+end     
 
 DisneyFilmsList::CLI.new.start

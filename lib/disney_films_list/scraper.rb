@@ -14,13 +14,15 @@ class DisneyFilmsList::Scraper
                 if film_name == "here"
                     next
                 end
-                film_href = row.attribute("href").value     
-                DisneyFilmsList::Film.new(film_name, film_href)
+                film_href = row.attribute("href").value  
+                new_href = film_href.sub("https://d23.com/", "") 
+
+                DisneyFilmsList::Film.new(film_name, new_href)
         end
     end
                 
     def self.get_film_bio(href)
-        doc = Nokogiri::HTML(open("https://d23.com/a-to-z/#{href}/"))
+        doc = Nokogiri::HTML(open("https://d23.com/#{href}/"))
         doc.css('.entry-content').text.strip
     end
  
